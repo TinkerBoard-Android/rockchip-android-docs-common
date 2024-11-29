@@ -1,0 +1,25 @@
+From df7c5af51a6c49c8c4cc2a2df27ca896ff9d13bb Mon Sep 17 00:00:00 2001
+From: frank_chiang <frank_chiang@asus.com>
+Date: Fri, 29 Nov 2024 14:34:54 +0800
+Subject: [PATCH 1/1] [PATCH] Remove hardcode of locking devices
+
+Change-Id: Ida28b06bb8ba876d8193e07b7b02e9a2959b2d47
+---
+ common/android_bootloader.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/common/android_bootloader.c b/common/android_bootloader.c
+index 246f264edc..9107d4af72 100644
+--- a/common/android_bootloader.c
++++ b/common/android_bootloader.c
+@@ -801,7 +801,6 @@ static AvbSlotVerifyResult android_slot_verify(char *boot_partname,
+ 	if (ops->read_is_device_unlocked(ops, (bool *)&unlocked) != AVB_IO_RESULT_OK)
+ 		printf("Error determining whether device is unlocked.\n");
+ 
+-	unlocked = 0;
+ 	printf("read_is_device_unlocked() ops returned that device is %s\n",
+ 	       (unlocked & LOCK_MASK)? "UNLOCKED" : "LOCKED");
+ 
+-- 
+2.25.1
+
